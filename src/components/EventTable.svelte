@@ -97,9 +97,6 @@
     >
   </div>
   <TableHead>
-    <!-- <TableHeadCell class="p-4">
-      <Checkbox />
-    </TableHeadCell> -->
     <TableHeadCell>
       <div class="show flex gap-5">
         <Checkbox />
