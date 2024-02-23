@@ -1,6 +1,7 @@
 <script>
   import EventTable from "./EventTable.svelte";
   import home from "../assets/home.png"
+  import Footer from '../components/MobileScreenFooter.svelte'
   import addbtn from "../assets/add-01.png"
   import MobileScreenTable from "./MobileScreenTable.svelte";
 import Thumbnail from "../assets/thumbnail/Thumbnail.png";
@@ -11,7 +12,7 @@ import SearchVector from "../assets/Vector.png";
 
 <section class=" w-full h-screen  py-4 flex flex-col gap-3 ">
 <!-- navbar -->
-<nav class="w-full flex justify-between items-center py-3 h-[15rem] bg-white border-b border-gray-400">
+<nav class="w-full flex justify-between items-center py-3 h-[4rem] bg-white border-b border-gray-400">
  <!-- left side -->
  <div class="Left ml-1 flex gap-2 items-center justify-center">
   <img src={Thumbnail} alt="" class="w-[3rem] h-[3rem] rounded-full">
@@ -32,7 +33,7 @@ import SearchVector from "../assets/Vector.png";
         <img src={addbtn} alt="">
         <span>Create event</span></button>
 </div>
-    <div class="eventable rounded-lg bg-white mb-[10rem]">
+    <div class="eventable rounded-lg bg-white mb-[10rem] h-[30rem] border">
         <!-- upcomoing events -->
      <div class="events px-4  mt-2 flex justify-between items-center">
         <h1 class="font-medium text-[1.2rem]">Upcoming Events</h1>
@@ -40,4 +41,6 @@ import SearchVector from "../assets/Vector.png";
      </div>
     <MobileScreenTable/>
     </div>
+
+    <Footer/>
 </section>
