@@ -14,7 +14,7 @@
      <div class="events px-5 mt-2 flex justify-between items-center">
         <h1 class="font-medium text-[1.2rem]">Upcoming Events</h1>
         <!-- create events -->
-    <button class="button p-2 rounded-md bg-[#1C64F2] text-white text-[0.9rem] mt-3 flex items-center gap-2 " >
+    <button class="button p-2 rounded-md bg-[#1C64F2] text-white text-[0.9rem] mt-3 flex items-center gap-2 ">
         <img src={addbtn} alt="">
         <span>Create event</span></button>
 

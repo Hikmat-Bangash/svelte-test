@@ -1,15 +1,10 @@
 <script>
   import Avatar from "../assets/Avatar.png";
-  import Thumbnail from "../assets/thumbnail/Thumbnail.png";
-  import Thumbnail2 from "../assets/thumbnail/thumbnail2.png";
-  import Thumbnail3 from "../assets/thumbnail/thumbnail3.png";
-  import Thumbnail4 from "../assets/thumbnail/thumbnail4.png";
 
   import OptionBtn from "../assets/Button.png";
   import Filter from "../assets/filter.png";
   import { Data } from "../constant/constantData";
   import {
-    Table,
     TableBody,
     TableBodyCell,
     TableBodyRow,
@@ -25,14 +20,58 @@
       item.product_name.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1
   );
 
-  let average = 10;
+ let filteredItems = [];
+
+  const sortByName = () => {
+    filteredItems = filteredItems.sort((a, b) => {
+      return a.product_name.localeCompare(b.product_name);
+    });
+  };
+
+  const sortByDescendingName = () => {
+    filteredItems = filteredItems.sort((a, b) => {
+      return b.product_name.localeCompare(a.product_name);
+    });
+  };
+
+  let isAscending = true;
+
+  const toggleSort = () => {
+    if (isAscending) {
+      sortByName();
+      isAscending = false;
+    } else {
+      sortByDescendingName();
+      isAscending = true;
+    }
+  };
+
+  const filterItems = () => {
+    filteredItems = Data.filter(
+      (item) =>
+        item.product_name.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1
+    );
+
+    if (!isAscending) {
+      sortByDescendingName();
+    }
+  };
+
+  $: filterItems();
+
+  const handleFilterClick = () => {
+    toggleSort();
+  };
+
+
 </script>
 
 <TableSearch placeholder="Search" hoverable={true} bind:inputValue={searchTerm}>
   <div class="flex space-x-4 absolute top-[1.4rem] left-[23rem]">
     <button
       class=" py-2 px-5 border border-gray-400 rounded-md font-semibold text-blue-500 flex items-center gap-1 hover:bg-slate-100"
-    >
+    on:click={handleFilterClick}
+      >
       <img src={Filter} alt="" />
       <p>Filters</p>
     </button>
@@ -125,7 +164,7 @@
 
         <TableBodyCell style="width: 15%;">
           <div class="w-[90%] range flex flex-col">
-            <p class=" text-end text-[#666C79]">{item.Seats}</p>
+            <p class=" text-end text-[0.7rem] mb-0.5 text-[#666C79]">{item.Seats}</p>
             <div class="w-full h-2 bg-gray-300 rounded-full overflow-hidden">
               <div
                 class={`h-full ${

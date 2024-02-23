@@ -11,5 +11,5 @@
 <section>
 	
 <HomePage/>
-	</section>
+</section>
 
